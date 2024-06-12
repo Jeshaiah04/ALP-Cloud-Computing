@@ -1,0 +1,168 @@
+openapi: 3.0.1
+info:
+  title: MovieCones API
+  description: API documentation for MovieCones
+  version: 1.0.0
+servers:
+  - url: http://127.0.0.1:5000
+paths:
+  /api/register:
+    post:
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '201':
+          description: User created successfully
+        '400':
+          description: User already exists
+  /api/login:
+    post:
+      summary: Login a user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Login successful, returns access token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+        '401':
+          description: Invalid credentials
+  /api/movies:
+    get:
+      summary: Get list of movies
+      responses:
+        '200':
+          description: A list of movies
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    description:
+                      type: string
+                    release_date:
+                      type: string
+                    rating:
+                      type: number
+    post:
+      summary: Add a new movie
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                release_date:
+                  type: string
+                rating:
+                  type: number
+      responses:
+        '201':
+          description: Movie added successfully
+  /api/movies/{movie_id}:
+    get:
+      summary: Get a movie by ID
+      parameters:
+        - in: path
+          name: movie_id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: A movie
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  description:
+                    type: string
+                  release_date:
+                    type: string
+                  rating:
+                    type: number
+    put:
+      summary: Update a movie by ID
+      parameters:
+        - in: path
+          name: movie_id
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                release_date:
+                  type: string
+                rating:
+                  type: number
+      responses:
+        '200':
+          description: Movie updated successfully
+    delete:
+      summary: Delete a movie by ID
+      parameters:
+        - in: path
+          name: movie_id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '204':
+          description: Movie deleted successfully
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  - bearerAuth: []
