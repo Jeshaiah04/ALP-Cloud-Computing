@@ -35,7 +35,7 @@ def create_app():
             'dom_id': '#swagger-ui',
             'deepLinking': True,
             'persistAuthorization': True,
-            'layout': "BaseLayout"
+            'layout': "StandaloneLayout"
         }
     )
     app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
