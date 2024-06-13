@@ -7,14 +7,24 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <h1>API Documentation</h1>
-    <li><a href="{{ url_for('swagger_ui') }}">API Documentation</a></li>
-    <h1>Movies</h1>
-    <a href="{{ url_for('web.logout') }}">Logout</a>
-    <ul>
-        {% for movie in movies %}
-            <li><a href="{{ url_for('web.movie_detail', movie_id=movie.id) }}">{{ movie.title }}</a></li>
-        {% endfor %}
-    </ul>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('web.home') }}">Home</a></li>
+            <li><a href="{{ url_for('web.movies') }}">Movies</a></li>
+            <li><a href="{{ url_for('swagger_ui') }}">API Documentation</a></li>
+            <li><a href="{{ url_for('web.register') }}">Register</a></li>
+            <li><a href="{{ url_for('web.login') }}">Login</a></li>
+            <li><a href="{{ url_for('web.logout') }}">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Movies</h1>
+        <ul class="movies">
+            {% for movie in movies %}
+                <li><a href="{{ url_for('web.movie_detail', movie_id=movie.id) }}">{{ movie.title }}</a></li>
+            {% endfor %}
+        </ul>
+        <button class="logout" onclick="window.location.href='{{ url_for('web.logout') }}'">Logout</button>
+    </div>
 </body>
 </html>

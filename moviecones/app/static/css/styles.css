@@ -1,26 +1,131 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 20px;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 h1 {
     color: #333;
-}
-
-form {
     margin-top: 20px;
 }
 
+nav {
+    background-color: #333;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    width: 80%;
+    max-width: 1000px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
 label {
-    display: block;
     margin-top: 10px;
 }
 
 input {
-    display: block;
+    padding: 10px;
+    margin-top: 5px;
     margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 button {
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
     margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+p {
+    margin-top: 20px;
+}
+
+p a {
+    color: #007BFF;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+ul.movies {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul.movies li {
+    background-color: #e2e2e2;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+ul.movies li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+ul.movies li a:hover {
+    color: #007BFF;
+}
+
+button.logout {
+    background-color: #ff4c4c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button.logout:hover {
+    background-color: #ff0000;
 }
